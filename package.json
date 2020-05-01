@@ -20,7 +20,9 @@
     "pack:renderer": "./node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production ./node_modules/webpack/bin/webpack.js --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "bash ./install-node-electron.sh",
     "unit": "./node_modules/jest/bin/jest.js ./test/unit",
-    "e2e": "npm run pack && ./node_modules/jest/bin/jest.js ./test/e2e --runInBand"
+    "e2e": "npm run pack && ./node_modules/jest/bin/jest.js ./test/e2e --runInBand",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "build": {
     "productName": "Grakn Workbase",
@@ -91,7 +93,8 @@
     "vue-router": "^2.5.3",
     "vue-toasted": "^1.1.19",
     "vuex": "^3.0.1",
-    "winston": "3.1.0"
+    "winston": "3.1.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.19",
@@ -156,5 +159,6 @@
     "moduleNameMapper": {
       "@/(.*)$": "<rootDir>/src/renderer/$1"
     }
-  }
+  },
+  "snyk": true
 }
